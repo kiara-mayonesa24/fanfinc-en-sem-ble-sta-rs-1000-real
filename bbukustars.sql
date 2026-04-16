@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-04-2026 a las 17:11:02
+-- Tiempo de generación: 15-04-2026 a las 09:21:02
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -35,6 +35,17 @@ CREATE TABLE `comentarios` (
   `fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`comentario_id`, `pub_id`, `usuario_id`, `texto`, `fecha`) VALUES
+(1, 1, 3, 'Aira siempre muy adorable^^', '2025-12-02 00:07:21'),
+(2, 2, 5, 'Increible concierto🤗🤗 bendiciones🙋‍♂️🕊', '2026-05-15 00:12:25'),
+(3, 3, 2, '👀👀 increible, deberías publicar más', '2026-02-03 00:13:28'),
+(4, 4, 4, 'Es canon, yo era la pared blanca', '2026-04-15 09:15:37'),
+(5, 5, 1, 'Mucho ojo, nikimayo mencionado', '2026-06-12 00:16:06');
+
 -- --------------------------------------------------------
 
 --
@@ -53,7 +64,10 @@ CREATE TABLE `hashtags` (
 
 INSERT INTO `hashtags` (`hashtag_id`, `etiqueta`, `creado_en`) VALUES
 (1, '#TillivanCanon', '2026-05-09'),
-(2, '#ProudOfMySon', '2026-06-11');
+(2, '#ProudOfMySon', '2026-06-11'),
+(3, '#EnsembleStars', '2015-08-11'),
+(4, '#YaoiFran', '2026-04-07'),
+(5, '#2Wink', '2024-10-11');
 
 -- --------------------------------------------------------
 
@@ -92,6 +106,17 @@ CREATE TABLE `pub_hashtags` (
   `hashtag_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `pub_hashtags`
+--
+
+INSERT INTO `pub_hashtags` (`pub_id`, `hashtag_id`) VALUES
+(1, 2),
+(4, 1),
+(1, 3),
+(3, 4),
+(2, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -104,6 +129,17 @@ CREATE TABLE `pub_likes` (
   `fecha_like` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `pub_likes`
+--
+
+INSERT INTO `pub_likes` (`pub_id`, `usuario_id`, `fecha_like`) VALUES
+(1, 1, '2026-04-06 00:16:51'),
+(1, 3, '2026-04-03 00:17:19'),
+(4, 1, '2026-08-07 00:17:33'),
+(2, 2, '2026-04-01 00:17:57'),
+(3, 5, '2025-12-11 00:18:18');
+
 -- --------------------------------------------------------
 
 --
@@ -115,6 +151,17 @@ CREATE TABLE `seguidores` (
   `seguido_id` int(11) NOT NULL,
   `fecha_follow` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `seguidores`
+--
+
+INSERT INTO `seguidores` (`seguidor_id`, `seguido_id`, `fecha_follow`) VALUES
+(3, 5, '2020-12-28'),
+(5, 3, '2021-04-01'),
+(1, 2, '2021-05-15'),
+(2, 4, '2026-04-15'),
+(4, 1, '2026-04-02');
 
 -- --------------------------------------------------------
 
@@ -204,13 +251,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `comentario_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comentario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `hashtags`
 --
 ALTER TABLE `hashtags`
-  MODIFY `hashtag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `hashtag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`
